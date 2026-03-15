@@ -72,8 +72,8 @@ run_inference              ← predicts masks for all patches
 
 ```bash
 # Clone and create virtual environment
-git clone <repo-url>
-cd unet-sentinel2-segmentation
+git clone https://github.com/Justclemax/UNet-Sentinel-2-Segmentation.git
+cd UNet-Sentinel-2-Segmentation
 python3.12 -m venv env
 source env/bin/activate
 
