@@ -1,0 +1,64 @@
+# ── Python ───────────────────────────────────────────────────────────────────
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+dist/
+build/
+*.egg
+
+# ── Virtual environment ───────────────────────────────────────────────────────
+env/
+venv/
+.venv/
+
+# ── Environment variables ─────────────────────────────────────────────────────
+.env
+.env.*
+
+# ── Data ─────────────────────────────────────────────────────────────────────
+# Raw downloaded scenes (large GeoTIFFs)
+data/scenes/
+# Preprocessed numpy arrays
+data/preprocessed/
+# Model checkpoints
+data/models/
+# Predictions
+data/predictions/
+# Keep the source vector data
+!data/training_data.geojson
+
+# ── Model artifacts ───────────────────────────────────────────────────────────
+*.pt
+*.pth
+*.npy
+*.tif
+*.tiff
+
+# ── IDE ───────────────────────────────────────────────────────────────────────
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# ── macOS ─────────────────────────────────────────────────────────────────────
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# ── Jupyter ───────────────────────────────────────────────────────────────────
+.ipynb_checkpoints/
+*.ipynb
+
+# ── ZenML ────────────────────────────────────────────────────────────────────
+# Keep .zen/config.yaml (stack config), ignore local artifact stores
+.zen/local_stores/
+
+# ── Logs ─────────────────────────────────────────────────────────────────────
+*.log
+logs/
+
+# ── CLAUDE.md ─────────────────────────────────────────────────────────────────────
+
+CLAUDE.md

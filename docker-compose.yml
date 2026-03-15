@@ -1,0 +1,36 @@
+services:
+
+  # ── Full pipeline (ingest → preprocess → train → evaluate → inference) ──────
+  pipeline:
+    build:
+      context: .
+      target: runtime
+    image: unet-sentinel2:latest
+    env_file: .env
+    volumes:
+      - ./data:/app/data        # input GeoJSON + output scenes / models / predictions
+      - ./src:/app/src          # live source reload during development
+    command: python run_pipeline.py
+
+  # ── Training only (assumes data/scenes/ already populated) ──────────────────
+  train:
+    build:
+      context: .
+      target: runtime
+    image: unet-sentinel2:latest
+    env_file: .env
+    volumes:
+      - ./data:/app/data
+      - ./src:/app/src
+    command: >
+      python -c "
+      import sys; sys.path.insert(0, 'src/pipelines');
+      from training_pipeline import training_pipeline;
+      training_pipeline(
+        scenes_dir='data/scenes',
+        vector_path='data/training_data.geojson',
+        data_dir='data',
+        epochs=50,
+        batch_size=8,
+      )()
+      "
